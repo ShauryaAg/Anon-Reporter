@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0x2df337CeC48E1b08BcF2e05BafFC948B415117eC"
+export const AnonContractAddress = "0xe087A8254DD211B51aef1c240756b1a32684D9c3"
 
 export const AnonContractABI = [
 	{
@@ -306,6 +306,11 @@ export const AnonContractABI = [
 		constant: false,
 		inputs: [
 			{
+				internalType: "string",
+				name: "content",
+				type: "string"
+			},
+			{
 				internalType: "uint256",
 				name: "deposit",
 				type: "uint256"
@@ -498,7 +503,12 @@ export const AnonContractABI = [
 				components: [
 					{
 						internalType: "uint256",
-						name: "id",
+						name: "streamId",
+						type: "uint256"
+					},
+					{
+						internalType: "uint256",
+						name: "Id",
 						type: "uint256"
 					},
 					{
@@ -524,7 +534,12 @@ export const AnonContractABI = [
 				components: [
 					{
 						internalType: "uint256",
-						name: "id",
+						name: "streamId",
+						type: "uint256"
+					},
+					{
+						internalType: "uint256",
+						name: "Id",
 						type: "uint256"
 					},
 					{

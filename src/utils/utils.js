@@ -53,6 +53,7 @@ export async function ApproveTokens(web3, account, amount, tokenAddress) {
 // Will always return streamID and error. Error can be null
 export async function StartReverseStream(
 	web3,
+	content,
 	deposit,
 	stopTime,
 	tokenAddress,
@@ -66,7 +67,9 @@ export async function StartReverseStream(
 		"tokenAddress ",
 		tokenAddress,
 		"userAddr ",
-		userAddr
+		userAddr,
+		"content",
+		content
 	);
 	// get anon contract instance
 	var AnonContract = await GetAnonContract(web3);
@@ -74,6 +77,7 @@ export async function StartReverseStream(
 	try {
 		const streamId = await AnonContract.methods
 			.createReverseStream(
+				content,
 				ethers.utils.parseEther(deposit).toString(),
 				tokenAddress,
 				stopTime
