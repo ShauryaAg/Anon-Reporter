@@ -28,11 +28,11 @@ class Home extends Component {
       console.log(reportContract)
       this.setState({ reportContract })
 
-      const reports = await reportContract.methods.getReports().call()
-      console.log("reports", reports)
+      const reports = await reportContract.methods.getUserReports(this.state.account).call()
+      console.log("user reports", reports)
 
-      // const gas = await reportContract.methods.reportEvent("content").estimateGas({from: this.state.account});
-      // console.log("gas ", gas)
+      const allReports = await reportContract.methods.getAllReports().call()
+      console.log("all reports", allReports)
     }
   
     constructor(props) {
@@ -87,6 +87,7 @@ class Home extends Component {
 
       try {
         await this.createReport("felula")
+        
         var streamID = await utils.StartReverseStream(
           web3,
           this.state.amount,
@@ -99,7 +100,7 @@ class Home extends Component {
         console.error(error);
       }
 
-      const reports = await reportContract.methods.getReports().call()
+      const reports = await reportContract.methods.getUserReports(this.state.account).call()
       console.log("reports", reports)
     }
   

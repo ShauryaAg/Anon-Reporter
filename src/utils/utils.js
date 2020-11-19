@@ -125,3 +125,17 @@ async function GetAnonContract(web3) {
       throw e;
     }
   }
+
+  export async function CreateReport(web3, content, userAddr) {
+    var AnonContract = await GetAnonContract(web3)
+
+    try{
+      await AnonContract.methods
+      .reportEvent(
+        content
+      )
+      .send({from: userAddr, gasPrice: 20})
+    } catch (e) {
+      console.log("error while creating report", e)
+    }
+  }

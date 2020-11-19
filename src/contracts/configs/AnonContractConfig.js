@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0x02822889C51860eED05683B2a818f7782bFc1370"
+export const AnonContractAddress = "0x2df337CeC48E1b08BcF2e05BafFC948B415117eC"
 
 export const AnonContractABI = [
     {
@@ -482,8 +482,41 @@ export const AnonContractABI = [
     },
     {
       constant: false,
+      inputs: [
+				{
+          indexed: true,
+          internalType: "address",
+          name: "user",
+          type: "address"
+        },
+			],
+      name: "getUserReports",
+      outputs: [
+        {
+          name: "Reports",
+          type: "tuple[]",
+          components: [
+            {
+							internalType: "uint256",
+              name: "id",
+              type: "uint256"
+            },
+            {
+							internalType: "string",
+              name: "content",
+              type: "string"
+            }
+          ]
+        }
+      ],
+      payable: false,
+      stateMutability: "nonpayable",
+      type: "function"
+		},
+		{
+      constant: false,
       inputs: [],
-      name: "getReports",
+      name: "getAllReports",
       outputs: [
         {
           name: "Reports",
