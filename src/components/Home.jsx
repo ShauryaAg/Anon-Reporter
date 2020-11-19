@@ -31,15 +31,15 @@ class Home extends Component {
       const reports = await reportContract.methods.getReports().call()
       console.log("reports", reports)
 
-      const gas = await reportContract.methods.reportEvent("content").estimateGas({from: this.state.account});
-      console.log("gas ", gas)
+      // const gas = await reportContract.methods.reportEvent("content").estimateGas({from: this.state.account});
+      // console.log("gas ", gas)
     }
   
     constructor(props) {
       super(props)
       this.state = { 
         account: '',
-        amount: '0.000001',
+        amount: '1',
       }
 
       this.onSubmit = this.onSubmit.bind(this)
@@ -49,9 +49,14 @@ class Home extends Component {
       const web3 = new Web3(Web3.currentProvider || "http://127.0.0.1:8545")
       const reportContract = this.state.reportContract
 
-      // await reportContract.methods.reportEvent(content).send({from: this.state.account, gas: 0})
       const gas = await reportContract.methods.reportEvent(content).estimateGas({from: this.state.account});
       console.log("gas ", gas)
+      
+      try {
+        await reportContract.methods.reportEvent(content).send({from: this.state.account, gas: gas})
+      } catch (e) {
+        console.error("Reporting err", e)
+      }
     }
 
     async approveToken(){
@@ -74,7 +79,7 @@ class Home extends Component {
       const web3 = new Web3(Web3.currentProvider || "http://127.0.0.1:8545")
       const reportContract = this.state.reportContract
 
-      this.approveToken()
+      await this.approveToken()
 
       const getUnixTimeUtc = (dateString = new Date()) =>
         Math.round(new Date(dateString).getTime() / 1000);
@@ -89,6 +94,7 @@ class Home extends Component {
           TokenAddress,
           this.state.account
         );
+        console.log("streamID", streamID)
       } catch(error) {
         console.error(error);
       }
@@ -111,7 +117,6 @@ class Home extends Component {
               <input type="submit" name="report__submit" id="report__submit"/>
             </form>
           </div>
-
         </div>
         
       );

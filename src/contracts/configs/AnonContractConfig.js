@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0xAC6E0492C854379da0213390EB0a671717Af0fE4"
+export const AnonContractAddress = "0x394708B00d39dEB7bbCf1f4577d17B3164F952C4"
 
 export const AnonContractABI = [
     {
@@ -490,11 +490,13 @@ export const AnonContractABI = [
           type: "tuple[]",
           components: [
             {
+							internalType: "uint256",
               name: "id",
               type: "uint256"
             },
             {
-              name: "evidence",
+							internalType: "string",
+              name: "content",
               type: "string"
             }
           ]
