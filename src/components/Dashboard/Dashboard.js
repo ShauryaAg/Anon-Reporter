@@ -14,14 +14,14 @@ class Dashboard extends React.Component {
     }
   };
 
-  componentWillMount(){
+  componentWillMount() {
     this.loadBlockchainData()
   }
 
   async loadBlockchainData() {
     const web3 = new Web3(Web3.currentProvider || "http://127.0.0.1:8545")
     window.ethereum.enable();
-    
+
     const accounts = await web3.eth.getAccounts()
     console.log(accounts)
     this.setState({ account: accounts[0] })
@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
 
     this.setState(newState);
   };
-  
+
   render() {
     return (
       <div>
