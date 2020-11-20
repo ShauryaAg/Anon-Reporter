@@ -7,7 +7,8 @@ import {
 	Header,
 	Icon,
 	Button,
-	TextArea
+	TextArea,
+	Input
 } from 'semantic-ui-react';
 
 import * as utils from '../../utils/utils'
@@ -108,7 +109,9 @@ class ReportForm extends React.Component {
 		  </Header>
 					<Form onSubmit={this.approveToken} size="large">
 						<Segment stacked>
-							<TextArea
+							<Input
+								type='number'
+								min='50'
 								placeholder='Amount'
 								name='amount'
 								onChange={this.handleChange}
@@ -117,7 +120,7 @@ class ReportForm extends React.Component {
 								placeholder='Token Address!'
 								name='tokenAddress'
 								value={this.state.tokenAddress}
-								onChange={(e) => { this.handleChange(e) }}
+								onChange={this.handleChange}
 							/>
 							<Button color="violet" fluid size="large" style={{ marginTop: "10px" }}>
 								Approve Token

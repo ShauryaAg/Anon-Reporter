@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0x764021cC6b46897221E90Eded9b4390367DC763d"
+export const AnonContractAddress = "0x789Fe823B55f949Efa55B4A2602a3BB411A604Da"
 
 export const AnonContractABI = [
 	{
@@ -519,11 +519,6 @@ export const AnonContractABI = [
 				components: [
 					{
 						internalType: "uint256",
-						name: "streamId",
-						type: "uint256"
-					},
-					{
-						internalType: "uint256",
 						name: "Id",
 						type: "uint256"
 					},
@@ -531,6 +526,15 @@ export const AnonContractABI = [
 						internalType: "string",
 						name: "content",
 						type: "string"
+					},
+					{
+						internalType: "uint256",
+						name: "streamId",
+						type: "uint256"
+					}, {
+						internalType: "uint256",
+						name: "amount",
+						type: "uint256"
 					}
 				]
 			}
@@ -550,11 +554,6 @@ export const AnonContractABI = [
 				components: [
 					{
 						internalType: "uint256",
-						name: "streamId",
-						type: "uint256"
-					},
-					{
-						internalType: "uint256",
 						name: "Id",
 						type: "uint256"
 					},
@@ -562,6 +561,15 @@ export const AnonContractABI = [
 						internalType: "string",
 						name: "content",
 						type: "string"
+					},
+					{
+						internalType: "uint256",
+						name: "streamId",
+						type: "uint256"
+					}, {
+						internalType: "uint256",
+						name: "amount",
+						type: "uint256"
 					}
 				]
 			}

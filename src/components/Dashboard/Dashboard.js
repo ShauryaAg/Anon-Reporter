@@ -1,9 +1,12 @@
+import { ethers } from "ethers"
 import Web3 from 'web3';
 import React from 'react';
 import { Button, Divider, Grid, Icon, Menu, } from "semantic-ui-react";
 
 import ReportForm from "./ReportForm";
 import { AnonContractABI, AnonContractAddress } from '../../contracts/configs/AnonContractConfig';
+
+import * as utils from '../../utils/utils'
 
 
 class Dashboard extends React.Component {
@@ -23,15 +26,26 @@ class Dashboard extends React.Component {
     window.ethereum.enable();
 
     const accounts = await web3.eth.getAccounts()
-    console.log(accounts)
     this.setState({ account: accounts[0] })
 
     const reportContract = new web3.eth.Contract(AnonContractABI, AnonContractAddress)
-    console.log(reportContract)
     this.setState({ reportContract })
 
-    const reports = await reportContract.methods.getUserReports(this.state.account).call()
-    console.log("user reports", reports)
+    const reports = await reportContract.methods.getAllReports().call()
+    console.log("all reports", reports)
+
+    var streamIDs = []
+    reports.forEach(report => {
+      streamIDs.push(report.streamId)
+      var amount = report.amount;
+      amount = Number(amount / 10 ** 18).toFixed(3)
+      console.log(amount)
+    })
+
+    streamIDs.forEach(async Id => {
+      var balance = await utils.BalanceOfStream(web3, Id)
+      console.log(balance)
+    })
   }
 
 
