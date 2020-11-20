@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0xe087A8254DD211B51aef1c240756b1a32684D9c3"
+export const AnonContractAddress = "0x764021cC6b46897221E90Eded9b4390367DC763d"
 
 export const AnonContractABI = [
 	{
@@ -306,11 +306,6 @@ export const AnonContractABI = [
 		constant: false,
 		inputs: [
 			{
-				internalType: "string",
-				name: "content",
-				type: "string"
-			},
-			{
 				internalType: "uint256",
 				name: "deposit",
 				type: "uint256"
@@ -458,10 +453,31 @@ export const AnonContractABI = [
 				internalType: "string",
 				name: "_content",
 				type: "string"
+			},
+			{
+				internalType: "uint256",
+				name: "deposit",
+				type: "uint256"
+			},
+			{
+				internalType: "address",
+				name: "tokenAddress",
+				type: "address"
+			},
+			{
+				internalType: "uint256",
+				name: "stopTime",
+				type: "uint256"
 			}
 		],
 		name: "reportEvent",
-		outputs: [],
+		outputs: [
+			{
+				internalType: "uint256",
+				name: "",
+				type: "uint256"
+			}
+		],
 		payable: false,
 		stateMutability: "nonpayable",
 		type: "function"

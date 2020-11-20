@@ -75,8 +75,7 @@ class ReportForm extends React.Component {
 		var stopTime = getUnixTimeUtc() + 3600;
 
 		try {
-			// await utils.CreateReport(web3, content, account)
-			var streamID = await utils.StartReverseStream(
+			await utils.CreateReport(
 				web3,
 				content,
 				amount,
@@ -84,7 +83,6 @@ class ReportForm extends React.Component {
 				tokenAddress,
 				account
 			)
-			console.log("streamID", streamID)
 		} catch (e) {
 			console.log("cannot create report", e)
 		}

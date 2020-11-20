@@ -53,7 +53,6 @@ export async function ApproveTokens(web3, account, amount, tokenAddress) {
 // Will always return streamID and error. Error can be null
 export async function StartReverseStream(
 	web3,
-	content,
 	deposit,
 	stopTime,
 	tokenAddress,
@@ -68,8 +67,6 @@ export async function StartReverseStream(
 		tokenAddress,
 		"userAddr ",
 		userAddr,
-		"content",
-		content
 	);
 	// get anon contract instance
 	var AnonContract = await GetAnonContract(web3);
@@ -77,7 +74,6 @@ export async function StartReverseStream(
 	try {
 		const streamId = await AnonContract.methods
 			.createReverseStream(
-				content,
 				ethers.utils.parseEther(deposit).toString(),
 				tokenAddress,
 				stopTime
@@ -131,15 +127,42 @@ export async function BalanceOfStream(web3, streamID) {
 	}
 }
 
-export async function CreateReport(web3, content, userAddr) {
+export async function CreateReport(
+	web3,
+	content,
+	deposit,
+	stopTime,
+	tokenAddress,
+	userAddr
+) {
 	var AnonContract = await GetAnonContract(web3)
+
+	console.log(
+		"deposit ",
+		deposit,
+		"stopTime ",
+		stopTime,
+		"tokenAddress ",
+		tokenAddress,
+		"userAddr ",
+		userAddr,
+		"content",
+		content
+	);
 
 	try {
 		await AnonContract.methods
 			.reportEvent(
-				content
+				content,
+				ethers.utils.parseEther(deposit).toString(),
+				tokenAddress,
+				stopTime
 			)
 			.send({ from: userAddr, gasPrice: 20 })
+
+		var nextStreamID = await AnonContract.methods.nextStreamId().call();
+		console.log("next streamID fetches", nextStreamID);
+		console.log("Tx was a success");
 	} catch (e) {
 		console.log("error while creating report", e)
 	}
