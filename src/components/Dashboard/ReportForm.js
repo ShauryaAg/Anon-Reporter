@@ -1,5 +1,6 @@
 import Web3 from 'web3';
 import React from 'react';
+import Swal from 'sweetalert2';
 import {
 	Grid,
 	Form,
@@ -8,7 +9,8 @@ import {
 	Icon,
 	Button,
 	TextArea,
-	Input
+	Input,
+	Label
 } from 'semantic-ui-react';
 
 import * as utils from '../../utils/utils'
@@ -107,38 +109,42 @@ class ReportForm extends React.Component {
 						<Icon name="edit outline" color="violet" />
 			Report
 		  </Header>
-					<Form onSubmit={this.approveToken} size="large">
-						<Segment stacked>
-							<Input
-								type='number'
-								min='1'
-								placeholder='Amount'
-								name='amount'
-								onChange={this.handleChange}
-							/>
-							<TextArea
-								placeholder='Token Address!'
-								name='tokenAddress'
-								value={this.state.tokenAddress}
-								onChange={this.handleChange}
-							/>
-							<Button color="violet" fluid size="large" style={{ marginTop: "10px" }}>
-								Approve Token
-			  </Button>
-						</Segment>
-					</Form>
-					<Form onSubmit={this.handleSubmit} size="large">
-						<Segment stacked>
-							<TextArea
-								placeholder='Tell us!'
-								name='detail'
-								onChange={this.handleChange}
-							/>
-							<Button color="violet" fluid size="large" style={{ marginTop: "10px" }}>
-								Proceed
-			  </Button>
-						</Segment>
-					</Form>
+						<Form onSubmit={this.approveToken} size="large">
+							<Segment stacked>
+								{/* <Input
+									type='number'
+									min='1'
+									placeholder='Amount'
+									name='amount'
+									onChange={this.handleChange}
+								/> */}
+									<Input labelPosition='right' type='number' placeholder='Amount'>
+										<Label basic>$</Label>
+										<input name='amount' onChange={this.handleChange} />
+									</Input>
+									<Input
+										placeholder='Token Address!'
+										name='tokenAddress'
+										value={this.state.tokenAddress}
+										onChange={this.handleChange}
+									/>
+									<Button color="violet" size="small" style={{ marginTop: "10px" }}>
+										Approve Token
+									</Button>
+							</Segment>
+						</Form>
+						<Form onSubmit={this.handleSubmit} size="large">
+							<Segment stacked>
+								<TextArea
+									placeholder='Tell us!'
+									name='detail'
+									onChange={this.handleChange}
+								/>
+								<Button color="violet" fluid size="large" style={{ marginTop: "10px" }}>
+									Report
+								</Button>
+							</Segment>
+						</Form>
 				</Grid.Column>
 			</Grid>
 		);
