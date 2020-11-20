@@ -31,7 +31,13 @@ class Dashboard extends React.Component {
     const reportContract = new web3.eth.Contract(AnonContractABI, AnonContractAddress)
     this.setState({ reportContract })
 
-    const reports = await reportContract.methods.getAllReports().call()
+    var reports = await reportContract.methods.getAllReports().call()
+    console.log("all reports", reports)
+
+    const valid = await reportContract.methods.toggleReportValidity(0).send({ from: this.state.account })
+    console.log("valid", valid)
+
+    reports = await reportContract.methods.getAllReports().call()
     console.log("all reports", reports)
 
     var streamIDs = []

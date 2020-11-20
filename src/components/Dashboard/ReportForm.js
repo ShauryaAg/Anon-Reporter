@@ -111,7 +111,7 @@ class ReportForm extends React.Component {
 						<Segment stacked>
 							<Input
 								type='number'
-								min='50'
+								min='5'
 								placeholder='Amount'
 								name='amount'
 								onChange={this.handleChange}

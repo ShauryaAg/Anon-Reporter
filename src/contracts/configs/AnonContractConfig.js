@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0x789Fe823B55f949Efa55B4A2602a3BB411A604Da"
+export const AnonContractAddress = "0xc7D1674d4664E156b33a7a8bBD396b5bF15bc905"
 
 export const AnonContractABI = [
 	{
@@ -531,10 +531,16 @@ export const AnonContractABI = [
 						internalType: "uint256",
 						name: "streamId",
 						type: "uint256"
-					}, {
+					},
+					{
 						internalType: "uint256",
 						name: "amount",
 						type: "uint256"
+					},
+					{
+						internalType: "bool",
+						name: "valid",
+						type: "bool"
 					}
 				]
 			}
@@ -566,10 +572,16 @@ export const AnonContractABI = [
 						internalType: "uint256",
 						name: "streamId",
 						type: "uint256"
-					}, {
+					},
+					{
 						internalType: "uint256",
 						name: "amount",
 						type: "uint256"
+					},
+					{
+						internalType: "bool",
+						name: "valid",
+						type: "bool"
 					}
 				]
 			}
@@ -577,5 +589,45 @@ export const AnonContractABI = [
 		payable: false,
 		stateMutability: "nonpayable",
 		type: "function"
+	},
+	{
+		constant: false,
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "_id",
+				type: "uint256"
+			},
+		],
+		name: "toggleReportValidity",
+		outputs: [
+			{
+				internalType: "bool",
+				name: "valid",
+				type: "bool",
+			}
+		],
+		payable: false,
+		stateMutability: "nonpayable",
+		type: "function"
+	},
+	{
+		anonymous: false,
+		inputs: [
+			{
+				indexed: true,
+				internalType: "uint256",
+				name: "id",
+				type: "uint256"
+			},
+			{
+				indexed: true,
+				internalType: "bool",
+				name: "valid",
+				type: "bool"
+			},
+		],
+		name: "ToggleValidity",
+		type: "event"
 	},
 ];
