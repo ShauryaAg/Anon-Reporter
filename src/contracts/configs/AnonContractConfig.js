@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 export const AnonContractAddress = "0xc7D1674d4664E156b33a7a8bBD396b5bF15bc905"
+=======
+export const AnonContractAddress = "0x8B5Be5ee5e87c597da96E82e6052969c0FABEC41"
+>>>>>>> bc4687e213b55f828c8f5d32d18bc165447795b2
 
 export const AnonContractABI = [
 	{

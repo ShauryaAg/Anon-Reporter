@@ -13,7 +13,8 @@ class AdminPanel extends React.Component {
     super(props)
 
     this.state = {
-      user: null
+      user: null,
+      reports: []
     }
 
   }
@@ -36,6 +37,8 @@ class AdminPanel extends React.Component {
 
     const reports = await reportContract.methods.getAllReports().call()
     console.log("user reports", reports)
+    this.setState({ reports });
+    console.log("state:", this.state);
   }
 
   componentDidMount() {
@@ -58,6 +61,15 @@ class AdminPanel extends React.Component {
       this.state.user ?
         <div>
           <button onClick={this.handleSignOut}>Logout</button>
+          {
+            this.state.reports.map(element => {
+              return( <div>
+                <div> {element.Id}</div>
+                <div> {element.content}</div>
+                <div> {element.amount}</div>
+              </div> )
+            })
+          }
         </div> :
         <Login />
     );
