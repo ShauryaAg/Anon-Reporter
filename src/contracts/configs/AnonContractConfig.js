@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0x789Fe823B55f949Efa55B4A2602a3BB411A604Da"
+export const AnonContractAddress = "0x8B5Be5ee5e87c597da96E82e6052969c0FABEC41"
 
 export const AnonContractABI = [
 	{
