@@ -2,6 +2,7 @@ import { ethers } from "ethers"
 import Web3 from 'web3';
 import React from 'react';
 import { Button, Divider, Grid, Icon, Menu, } from "semantic-ui-react";
+import Swal from 'sweetalert2';
 
 import ReportForm from "./ReportForm";
 import { AnonContractABI, AnonContractAddress } from '../../contracts/configs/AnonContractConfig';
@@ -22,8 +23,13 @@ class Dashboard extends React.Component {
   }
 
   async loadBlockchainData() {
-    const web3 = new Web3(Web3.currentProvider || "http://127.0.0.1:8545")
-    window.ethereum.enable();
+    try {
+			await window.ethereum.enable();
+		} catch (e) {
+			Swal.fire("Couldn't enable Ethereum, do you have metamask installed?")
+		}
+
+		const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:8545")
 
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
@@ -34,8 +40,8 @@ class Dashboard extends React.Component {
     var reports = await reportContract.methods.getAllReports().call()
     console.log("all reports", reports)
 
-    const valid = await reportContract.methods.toggleReportValidity(0).send({ from: this.state.account })
-    console.log("valid", valid)
+    // const valid = await reportContract.methods.toggleReportValidity(0).send({ from: this.state.account })
+    // console.log("valid", valid)
 
     reports = await reportContract.methods.getAllReports().call()
     console.log("all reports", reports)

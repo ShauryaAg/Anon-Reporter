@@ -40,7 +40,8 @@ class ReportForm extends React.Component {
 		try {
 			await window.ethereum.enable();
 		} catch (e) {
-			Swal.fire("Couldn't enable Ethereum, do you have metamask installed?")
+			// Swal.fire("Couldn't enable Ethereum, do you have metamask installed?")
+			console.log("Couldn't enable Ethereum, do you have metamask installed?");
 		}
 
 		const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:8545")
@@ -61,14 +62,22 @@ class ReportForm extends React.Component {
 		const { account, amount, tokenAddress } = this.state
 
 		try {
-			await utils.ApproveTokens(
+			utils.ApproveTokens(
 				web3,
 				account,
 				amount,
 				tokenAddress
-			);
+			).then(() => Swal.fire({
+				icon: 'success',
+				text: 'Token Approved'
+			}));
 		} catch (e) {
 			console.error("cannot approve token", e)
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops..',
+				text: 'Cannot approve token!'
+			});
 		}
 	}
 
@@ -90,9 +99,17 @@ class ReportForm extends React.Component {
 				stopTime,
 				tokenAddress,
 				account
-			)
+			);
+			Swal.fire({
+				icon: 'success',
+				text: 'Report Created!'
+			})
 		} catch (e) {
 			console.log("cannot create report", e)
+			Swal.fire({
+				icon: 'error',
+				text: 'Cannot create report!'
+			})
 		}
 	}
 
@@ -115,28 +132,30 @@ class ReportForm extends React.Component {
 			Report
 		  </Header>
 					<Form onSubmit={this.approveToken} size="large">
-						<Segment stacked>
-							{/* <Input
-									type='number'
-									min='1'
-									placeholder='Amount'
-									name='amount'
-									onChange={this.handleChange}
-								/> */}
+						<Segment.Group stacked>
+							<Segment>
 							<Input labelPosition='right' type='number' placeholder='Amount'>
 								<Label basic>$</Label>
 								<input name='amount' onChange={this.handleChange} />
 							</Input>
+							</Segment>
+							<Segment>
 							<Input
-								placeholder='Token Address!'
-								name='tokenAddress'
-								value={this.state.tokenAddress}
-								onChange={this.handleChange}
-							/>
+								// placeholder='Token Address!'
+								// name='tokenAddress'
+								// value={this.state.tokenAddress}
+								// onChange={this.handleChange}
+							>
+								<Label basic>Token</Label>
+								<input name='tokenAddress' onChange={this.handleChange} value={this.state.tokenAddress} />
+							</Input>
+							</Segment>
+							<Segment>
 							<Button color="violet" size="small" style={{ marginTop: "10px" }}>
 								Approve Token
-									</Button>
-						</Segment>
+							</Button>
+							</Segment>
+						</Segment.Group>
 					</Form>
 					<Form onSubmit={this.handleSubmit} size="large">
 						<Segment stacked>

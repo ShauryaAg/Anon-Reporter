@@ -182,5 +182,6 @@ export async function CreateReport(
 		console.log("Tx was a success");
 	} catch (e) {
 		console.log("error while creating report", e)
+		throw e;
 	}
 }
