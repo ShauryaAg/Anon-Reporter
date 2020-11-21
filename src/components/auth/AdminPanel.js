@@ -36,8 +36,10 @@ class AdminPanel extends React.Component {
   };
 
   async loadBlockchainData() {
-    const web3 = new Web3(Web3.currentProvider || "http://127.0.0.1:8545")
     window.ethereum.enable();
+    const web3 = new Web3(Web3.currentProvider || "http://127.0.0.1:8545")
+
+    this.setState({ web3 })
 
     const accounts = await web3.eth.getAccounts()
     console.log(accounts)
@@ -51,6 +53,12 @@ class AdminPanel extends React.Component {
     console.log("user reports", reports)
     this.setState({ reports });
     console.log("state:", this.state);
+  }
+
+  async burnAmount(id) {
+    const { web3, account } = this.state
+
+    utils.CloseStream(web3, id, 0, 0, account)
   }
 
   componentDidMount() {
@@ -94,21 +102,28 @@ class AdminPanel extends React.Component {
               </Menu.Menu>
             </Menu>
           </Grid>
-          <Header as='h1' textAlign='center' style={{marginTop: '50px'}}>Reports</Header>
-          <Segment style={{marginTop: '30px'}}>
+          <Header as='h1' textAlign='center' style={{ marginTop: '50px' }}>Reports</Header>
+          <Segment style={{ marginTop: '30px' }}>
             <Item.Group>
-              { this.state.reports.map(report => {
+              {this.state.reports.map(report => {
                 return (
                   <Item>
                     <Item.Content>
-                      <Item.Header>{report.Id}</Item.Header>
-                      <Item.Meta>{report.content}</Item.Meta>
-                      <Item.Extra>Amount: {report.amount}</Item.Extra>
+                      <Item.Header>Id: {report.Id}</Item.Header>
+                      <Item.Meta>Content: {report.content}</Item.Meta>
+                      <Item.Extra>Amount: {Number(report.amount / 10 ** 18)} Tokens</Item.Extra>
                     </Item.Content>
-                    <Button disabled={!report.valid} size="tiny" color='red'>Burn Amount</Button>
+                    <Button
+                      onClick={() => this.burnAmount(report.Id)}
+                      disabled={!report.valid}
+                      size="tiny"
+                      color='red'
+                    >
+                      Burn Amount
+                    </Button>
                   </Item>
                 );
-              }) }
+              })}
             </Item.Group>
           </Segment>
         </div> :

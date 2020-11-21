@@ -37,8 +37,13 @@ class ReportForm extends React.Component {
 	}
 
 	async loadBlockchainData() {
-		const web3 = new Web3(Web3.currentProvider || "http://127.0.0.1:8545")
-		window.ethereum.enable();
+		try {
+			await window.ethereum.enable();
+		} catch (e) {
+			Swal.fire("Couldn't enable Ethereum, do you have metamask installed?")
+		}
+
+		const web3 = new Web3(Web3.givenProvider || "http://127.0.0.1:8545")
 
 		const accounts = await web3.eth.getAccounts()
 		console.log(accounts)
@@ -109,42 +114,42 @@ class ReportForm extends React.Component {
 						<Icon name="edit outline" color="violet" />
 			Report
 		  </Header>
-						<Form onSubmit={this.approveToken} size="large">
-							<Segment stacked>
-								{/* <Input
+					<Form onSubmit={this.approveToken} size="large">
+						<Segment stacked>
+							{/* <Input
 									type='number'
 									min='1'
 									placeholder='Amount'
 									name='amount'
 									onChange={this.handleChange}
 								/> */}
-									<Input labelPosition='right' type='number' placeholder='Amount'>
-										<Label basic>$</Label>
-										<input name='amount' onChange={this.handleChange} />
-									</Input>
-									<Input
-										placeholder='Token Address!'
-										name='tokenAddress'
-										value={this.state.tokenAddress}
-										onChange={this.handleChange}
-									/>
-									<Button color="violet" size="small" style={{ marginTop: "10px" }}>
-										Approve Token
+							<Input labelPosition='right' type='number' placeholder='Amount'>
+								<Label basic>$</Label>
+								<input name='amount' onChange={this.handleChange} />
+							</Input>
+							<Input
+								placeholder='Token Address!'
+								name='tokenAddress'
+								value={this.state.tokenAddress}
+								onChange={this.handleChange}
+							/>
+							<Button color="violet" size="small" style={{ marginTop: "10px" }}>
+								Approve Token
 									</Button>
-							</Segment>
-						</Form>
-						<Form onSubmit={this.handleSubmit} size="large">
-							<Segment stacked>
-								<TextArea
-									placeholder='Tell us!'
-									name='detail'
-									onChange={this.handleChange}
-								/>
-								<Button color="violet" fluid size="large" style={{ marginTop: "10px" }}>
-									Report
+						</Segment>
+					</Form>
+					<Form onSubmit={this.handleSubmit} size="large">
+						<Segment stacked>
+							<TextArea
+								placeholder='Tell us!'
+								name='detail'
+								onChange={this.handleChange}
+							/>
+							<Button color="violet" fluid size="large" style={{ marginTop: "10px" }}>
+								Report
 								</Button>
-							</Segment>
-						</Form>
+						</Segment>
+					</Form>
 				</Grid.Column>
 			</Grid>
 		);

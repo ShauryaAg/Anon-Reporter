@@ -102,12 +102,29 @@ export async function CloseStream(
 	try {
 		// create reverse stream
 		await AnonContract.methods
-			.Close(streamID, burnPart, refundPart)
+			.Close(streamID)
 			.send({ from: userAddr, gasPrice: 0 });
 		return null;
 	} catch (e) {
 		console.log("error while closing stream", e);
 		throw e;
+	}
+}
+
+// Dont use this one
+export async function toggleValidity(
+	web3,
+	streamID,
+	userAddr
+) {
+	var AnonContract = await GetAnonContract(web3);
+	try {
+		const valid = await AnonContract.methods
+			.toggleReportValidity(streamID)
+			.send({ from: userAddr, gasPrice: 0 })
+		return valid;
+	} catch (e) {
+		console.log("error while toggling validity", e)
 	}
 }
 

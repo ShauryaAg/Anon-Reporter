@@ -1,4 +1,4 @@
-export const AnonContractAddress = "0x38a81CA169286D6e98722F779E747C5FD1A769E3"
+export const AnonContractAddress = "0x1E56943DE43EA7f0d2baBE2a4266E6264088Df95"
 
 export const AnonContractABI = [
 	{
@@ -429,19 +429,15 @@ export const AnonContractABI = [
 				name: "streamId",
 				type: "uint256"
 			},
-			{
-				internalType: "uint256",
-				name: "burnPart",
-				type: "uint256"
-			},
-			{
-				internalType: "uint256",
-				name: "refundPart",
-				type: "uint256"
-			}
 		],
 		name: "Close",
-		outputs: [],
+		outputs: [
+			{
+				internalType: "bool",
+				name: "valid",
+				type: "bool"
+			},
+		],
 		payable: false,
 		stateMutability: "nonpayable",
 		type: "function"

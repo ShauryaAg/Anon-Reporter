@@ -1,4 +1,4 @@
-export const TokenAddress = "0xCB615161734395c8CeDCb8e498EdA521B4cFF969"
+export const TokenAddress = "0x2af3d976017f88050dBBbE52F4085DdB5B286084"
 
 export const TokenABI = [
 	{
