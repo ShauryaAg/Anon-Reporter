@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Anon
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Workplace harassment faced by women by male coworkers which threatens their security, sanity and mental stability.
+Destabilization of workplace environment leading to unsafe and vulnerable state of mind.
 
-## Available Scripts
+### SOLUTION:
+- Provisioning of anonymous online reporting against harassment most women face in their workplace.
+- Usage of blockchain will ensure anonymity of the individual and reduce chances of spam reports.
+- Burnt token due to illegitimate reports will direct to a common pool, which can be used for women in need.
+- Women buying/selling (ERC-20) Tokens on any public blockchain network will ensure a stable income for the women, hence ensuring financial development of the individual.
 
-In the project directory, you can run:
+### USERS:
+- Corporate workers who face harrasment in the workplace.
+- Women who want to ensure complete anonymity while reporting a case.
 
-### `npm start`
+### WORKING:
+- User files a report after approving the certain amount of ERC-20 Token for the transaction.
+- These tokens are kept as a deposit against the report filed.
+- Once, the report is filed, a reverse stream is started to return the deposited token amount back to the reporter at a certain rate.
+- If the admin marks the report as a false accusation, the amount deposited against the report is burnt and the remaining amount is NOT returned back to the reporter.
+- This ensures the reports are as legitimate as possible.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Workflow:
+![workflow](https://user-images.githubusercontent.com/31778302/100244282-c0054680-2f5c-11eb-869c-0aa89822cb54.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Future Scope:
+- Additional chat feature for admin to get more proofs if required.
+- Provisioning of additional platform to talk to professional experts anonymously.
+- Could be available publicly for everyone for reporting cases of cyber-bullying and online sexual harassment. 
+- Scope for reporting of online harassment with proofs (screenshots) to cyber security department.
+- The tokens collected from spam reports can be directed to a common pool, thereby can be used for the welfare of the victims.
